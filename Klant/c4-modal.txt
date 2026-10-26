@@ -1,0 +1,52 @@
+workspace {
+
+    model {
+        user = person "Customer"
+        softwareSystem = softwareSystem "Online Shop" {
+            webapp = container "Web Application" {
+                user -> this "Uses"
+                categorypages = component "Categories"{
+                    user -> this "Chooses product category"
+                }
+                scanner = component "Scanner"{
+                    user -> this "Scans product"
+                }
+                shoppingcart = component "Shoppingcart"{
+                    scanner -> this "Puts product in cart"
+                    categorypages -> this "Puts product in cart"
+                }
+                orderpage = component "Orderpage"{
+                    user -> this "Adds user information"
+                    shoppingcart -> this "Sends products from shoppingcart"
+                }
+            }
+            backEndSystem = container "NodeJS Backend"{
+                webapp -> this "Sends and retrieves data"
+                scanner -> this "Retrieves product data"
+                categorypages -> this "Retrieves product data"
+                orderpage -> this "Sends order information"
+            }
+            container "Database" {
+                backEndSystem -> this "Reads from and writes to"
+            }
+        }
+    }
+
+    views {
+        systemContext softwareSystem {
+            include *
+            autolayout tb
+        }
+
+        container softwareSystem {
+            include *
+            autolayout tb
+        }
+        component webapp {
+            include *
+            autolayout tb
+        }
+        theme default
+    }
+
+}

@@ -1,0 +1,66 @@
+@import 'theme-colors';
+html,
+body {
+    overflow-x: hidden;
+    width: 100vw;
+}
+
+html {
+    overflow-x: hidden;
+    width: 100vw;
+}
+
+.app-background {
+    background-color: var(--app-background-color);
+}
+
+.dynamic-title {
+    color: var(--dynamic-title-color);
+}
+
+
+/* Modal Styles */
+
+.modalheader .title {
+    margin-left: auto;
+    margin-right: auto;
+    color: var(--header-text-color);
+}
+
+.modalheader .closebutton {
+    right: 0;
+    top: 0;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1;
+    position: absolute;
+}
+
+.modalheader .closebutton h1 {
+    border: 1px solid #000000;
+    background-color: #4350b2;
+    color: var(--header-text-color);
+    box-shadow: 0 5px 5px 0 #00000099, 0 1px 10px 0 #00000099;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.modalheader {
+    background-color: var(--app-header-background-color);
+    border-bottom: 1px solid #000000;
+}
+
+.modalcontent {
+    display: block;
+    padding-top: 10px;
+    color: var(--item-block-text-color);
+}
+
+.modalfooter {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: var(--app-header-background-color);
+}

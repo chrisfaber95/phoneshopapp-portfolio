@@ -1,0 +1,79 @@
+{
+  "name": "cooplubbersapp",
+  "version": "0.18.21",
+  "private": true,
+  "allowScripts": {
+    "core-js": false,
+    "vue3-date-time-picker": false,
+    "sharp": false,
+    "vue-demi": false,
+    "@parcel/watcher": false
+  },
+  "scripts": {
+    "serve": "vue-cli-service serve --openssl-legacy-provider",
+    "build": "vue-cli-service build",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "@chenfengyuan/vue-barcode": "^2.0.2",
+    "@ericblade/quagga2": "^1.12.1",
+    "@vueform/toggle": "^2.1.4",
+    "@vuepic/vue-datepicker": "^14.0.0",
+    "@zxing/browser": "^0.2.1",
+    "@zxing/library": "^0.23.0",
+    "axios": "^1.20.0",
+    "babel-plugin-transform-remove-console": "^6.9.4",
+    "core-js": "^3.50.0",
+    "html2canvas": "^1.4.1",
+    "html5-qrcode": "^2.3.8",
+    "jquery": "^4.0.0",
+    "js-cookie": "^3.0.8",
+    "jwt-decode": "^4.0.0",
+    "luxon": "^3.7.2",
+    "moment": "^2.31.0",
+    "pdfjs-dist": "^6.3.289",
+    "qrcode-vue3": "^1.7.1",
+    "quagga": "^0.12.1",
+    "register-service-worker": "^1.7.2",
+    "sass": "^1.105.1",
+    "sass-loader": "^17.0.1",
+    "swiper": "^14.3.0",
+    "v-lazy-image": "^2.1.1",
+    "validator": "^13.15.35",
+    "vue": "^3.5.43",
+    "vue-cookie-accept-decline": "^6.1.0",
+    "vue-router": "^5.3.1",
+    "vue3-carousel": "^0.17.0",
+    "vue3-date-time-picker": "^2.8.3",
+    "vue3-datepicker": "^0.4.0",
+    "vue3-lazy": "^1.0.0-alpha.1",
+    "vue3-simple-alert": "^1.0.4",
+    "vue3-timepicker": "^1.0.0-beta.2",
+    "vue3-touch-events": "^5.0.15",
+    "vuex": "^4.1.0",
+    "weekstart": "^2.0.0",
+    "zxing": "^0.1.2"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@vue/cli-plugin-babel": "^5.0.8",
+    "@vue/cli-plugin-pwa": "^5.0.8",
+    "@vue/cli-plugin-router": "^5.0.8",
+    "@vue/cli-plugin-vuex": "^5.0.8",
+    "@vue/cli-service": "^5.0.8",
+    "@vue/compiler-sfc": "^3.5.43",
+    "eslint": "^10.11.0",
+    "eslint-plugin-vue": "^10.11.1",
+    "globals": "^17.13.0",
+    "vue-eslint-parser": "^10.4.1"
+  },
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {}
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions"
+  ]
+}

@@ -1,0 +1,11 @@
+[
+  { "name": "GET spaaractie (all)", "method": "GET", "path": "/api/v1/spaaractie" },
+  { "name": "GET spaaractie single", "method": "GET", "path": "/api/v1/spaaractie/60257f96-539e-11ed-b67e-0242ac110003" },
+  { "name": "GET spaaractie unknown", "method": "GET", "path": "/api/v1/spaaractie/00000000-0000-4000-8000-000000000000" },
+  { "name": "GET cards of the customer", "method": "GET", "path": "/api/v1/customer_spaaractie/bbbbbbbb-0000-4000-8000-000000000001", "headers": { "authorization": "{{token:customer}}" } },
+  { "name": "GET cards of another customer", "method": "GET", "path": "/api/v1/customer_spaaractie/aaaaaaaa-0000-4000-8000-000000000001", "headers": { "authorization": "{{token:customer}}" }, "knownDifference": "a customer could read the stamp cards of any customer by id; now 403" },
+  { "name": "GET cards without token", "method": "GET", "path": "/api/v1/customer_spaaractie/bbbbbbbb-0000-4000-8000-000000000001", "ignoreKeys": ["error"] },
+  { "name": "GET cards list (customer)", "method": "GET", "path": "/api/v1/customer_spaaractie", "headers": { "authorization": "{{token:customer}}" }, "ignoreKeys": ["password", "accessToken", "resettoken", "createdAt", "updatedAt", "deletedAt"], "knownDifference": "the old list sent the whole customer record with password hash; a customer now only gets their own cards" },
+  { "name": "GET cards list filtered (employee)", "method": "GET", "path": "/api/v1/customer_spaaractie?customer_id=bbbbbbbb-0000-4000-8000-000000000001", "headers": { "authorization": "{{token:employee}}" }, "ignoreKeys": ["password", "accessToken", "resettoken", "createdAt", "updatedAt", "deletedAt"] },
+  { "name": "PUT nostamps (employee)", "method": "PUT", "path": "/api/v1/customer_spaaractie/nostamps", "headers": { "authorization": "{{token:employee}}" }, "body": {}, "ignoreKeys": ["message"] }
+]

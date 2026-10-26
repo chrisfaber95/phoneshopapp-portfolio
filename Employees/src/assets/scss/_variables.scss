@@ -1,0 +1,15 @@
+:root[data-theme="theme-base"]{
+    --base-color: #F58320;
+    --base-color-disabled: #ee9d57;
+    --header-border: #ff0000;
+}
+:root[data-theme="theme-coop"]{
+    --base-color: #F58320;
+    --base-color-disabled: #ee9d57;
+    --header-border: #ff0000;
+}
+:root[data-theme="theme-plus"]{
+    --base-color: #80BD1D;
+    --base-color-disabled: #acda63;
+    --header-border: #2c2c2c;
+}

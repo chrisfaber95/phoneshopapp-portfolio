@@ -1,0 +1,9 @@
+{
+  "name": "shopapp-parity",
+  "private": true,
+  "description": "Differential test harness: old Server vs. the new NestJS server (no dependencies)",
+  "scripts": {
+    "test": "node --test tests/*.test.js",
+    "inventory": "node list-endpoints.js --write"
+  }
+}

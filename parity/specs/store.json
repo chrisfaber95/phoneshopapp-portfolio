@@ -1,0 +1,10 @@
+[
+  { "name": "GET v2 root", "method": "GET", "path": "/api/v2" },
+  { "name": "GET shops", "method": "GET", "path": "/api/v2/shops?shopname=Parity%20Shop", "ignoreKeys": ["database_name", "database_pw", "database_user"] },
+  { "name": "GET timeslot", "method": "GET", "path": "/api/v2/timeslot", "ignoreKeys": ["database_name", "database_pw", "database_user"] },
+  { "name": "GET delivery_location", "method": "GET", "path": "/api/v2/delivery_location", "ignoreKeys": ["database_name", "database_pw", "database_user"] },
+  { "name": "GET terms", "method": "GET", "path": "/api/v2/terms" },
+  { "name": "GET job_offer", "method": "GET", "path": "/api/v2/job_offer", "ignoreKeys": ["database_name", "database_pw", "database_user", "createdAt", "updatedAt"] },
+  { "name": "GET job_application without token", "method": "GET", "path": "/api/v2/job_application", "ignoreKeys": ["error"] },
+  { "name": "GET job_application (employee)", "method": "GET", "path": "/api/v2/job_application", "headers": { "authorization": "{{token:employee}}" }, "ignoreKeys": ["createdAt", "updatedAt"] }
+]

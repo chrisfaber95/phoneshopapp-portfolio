@@ -1,0 +1,68 @@
+{
+  "name": "shopapp-server-nest",
+  "version": "0.1.0",
+  "private": true,
+  "description": "NestJS rewrite of the ShopApp Server",
+  "license": "ISC",
+  "allowScripts": {
+    "@parcel/watcher": false,
+    "unrs-resolver": false
+  },
+  "dependencies": {
+    "@mollie/api-client": "^4.6.0",
+    "@nestjs/common": "^11.2.7",
+    "@nestjs/config": "^4.0.4",
+    "@nestjs/core": "^11.2.7",
+    "@nestjs/jwt": "^11.0.2",
+    "@nestjs/platform-express": "^11.2.7",
+    "@nestjs/sequelize": "^11.0.1",
+    "@nestjs/throttler": "^6.7.1",
+    "bcryptjs": "^3.0.3",
+    "bwip-js": "^4.11.4",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.15.1",
+    "cryptr": "^6.4.0",
+    "he": "^1.2.0",
+    "helmet": "^8.3.0",
+    "mysql2": "^3.24.5",
+    "nodemailer": "^10.0.13",
+    "pdfmake": "^0.3.11",
+    "qrcode": "^1.5.4",
+    "reflect-metadata": "^0.2.2",
+    "rxjs": "^7.8.2",
+    "sequelize": "^6.37.8",
+    "sequelize-typescript": "^2.1.6",
+    "sharp": "^0.35.5"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@nestjs/cli": "^11.0.24",
+    "@nestjs/testing": "^11.2.7",
+    "@types/express": "^5.0.6",
+    "@types/he": "^1.2.3",
+    "@types/jest": "^30.0.0",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/node": "^26.6.3",
+    "@types/nodemailer": "^8.0.2",
+    "@types/qrcode": "^1.5.6",
+    "@types/supertest": "^7.2.1",
+    "eslint": "^10.11.0",
+    "jest": "^30.5.2",
+    "jsonwebtoken": "^9.0.3",
+    "supertest": "^7.3.0",
+    "ts-jest": "^29.4.14",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.71.0"
+  },
+  "scripts": {
+    "build": "nest build",
+    "start": "node dist/main",
+    "start:dev": "nest start --watch",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "test": "jest"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

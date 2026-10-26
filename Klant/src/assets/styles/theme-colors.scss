@@ -1,0 +1,39 @@
+:root {
+    --header-color: #F58320;
+    --button-color: #363636;
+    --button-active-color: #F58320;
+    --highlight-color: #4a4a4a;
+}
+
+:root [theme="theme-coop"] {
+    --header-color: #F58320;
+    --button-color: #363636;
+    --button-active-color: #F58320;
+    --highlight-color: #4a4a4a;
+}
+
+:root[data-theme="theme-plus"] {
+    --header-color: #80BD1D;
+    --button-color: #363636;
+    --button-active-color: #80BD1D;
+    --highlight-color: #4a4a4a;
+}
+
+:root[data-theme="theme-mega"] {
+    --header-color: #EF1B21;
+    --button-color: #363636;
+    --button-active-color: #EF1B21;
+    --highlight-color: #4a4a4a;
+}
+
+[theme="whiteboard"] {
+    --app-background-color: #FFFFFF;
+    --dynamic-title-color: #363636;
+    --dynamic-subtitle-color: #4a4a4a;
+    --text-color: #333333;
+    --item-block-text-color: #333333;
+    --item-block-background-color: #FFFFFF;
+    --app-header-background-color: #5767e5;
+    --header-text-color: #FFFFFF;
+    --modal-background-color: #FFFFFF;
+}

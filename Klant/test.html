@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="UTF-8">
+      <title>Factuur</title>
+      <style>body{font-family:Arial,sans-serif;margin:0;padding:0}.invoice-container{width:800px;margin:0 auto;background-color:#fff;padding:30px;box-shadow:0 0 10px #ccc}.invoice-header{text-align:center;margin-bottom:40px}.invoice-header h1{font-size:36px;color:#333}.invoice-header p{font-size:16px;color:#555;margin-top:10px}.invoice-details{display:flex;justify-content:space-between;margin-bottom:40px}.invoice-details .invoice-info{width:45%}.invoice-details .invoice-info h3{font-size:20px;color:#333;margin-bottom:20px}.invoice-details .invoice-info p{font-size:14px;color:#555;line-height:1.5}.invoice-details .invoice-info .bold{font-weight:bold;color:#333}.invoice-table{width:100%;margin-bottom:40px;border-collapse:collapse}.invoice-table th,.invoice-table td{border:1px solid #ddd;padding:12px;text-align:left;font-size:14px;color:#555}.invoice-table th{background-color:#f2f2f2;font-weight:bold;color:#333}.invoice-table td.total{text-align:right;font-weight:bold}.invoice-footer{text-align:center;font-size:14px;color:#555}</style>
+   </head>
+   <body>
+      <div class="invoice-container">
+         <div class="invoice-header">
+            <h1>Factuur</h1>
+            <p>Ordernummer: 12345678</p>
+         </div>
+         <div class="invoice-details">
+            <div class="invoice-info">
+               <h3>Details verkoper</h3>
+               <p>Bedrijfsnaam: Online Supermarkt</p>
+               <p>Adres: 123 Main St.</p>
+               <p>Stad, Provincie 12345</p>
+            </div>
+            <div class="invoice-info">
+               <h3>Details klant</h3>
+               <p>Naam: John Doe</p>
+               <p>Adres: 456 Main St.</p>
+               <p>Stad, Provincie 56789</p>
+            </div>
+         </div>
+         <table class="invoice-table">
+            <thead>
+               <tr>
+                  <th>Product</th>
+                  <th>Aantal</th>
+                  <th>btw</th>
+                  <th>Prijs excl.</th>
+                  <th>Prijs incl.</th>
+                  <th>Totaal</th>
+               </tr>
+            </thead>
+            <tbody>
+               <tr>
+                  <td>Product 1</td>
+                  <td>2</td>
+                  <td>0</td>
+                  <td>$10</td>
+                  <td>$10</td>
+                  <td>$20</td>
+               </tr>
+               <tr>
+                    <td>Product 1 statiegeld</td>
+                    <td colspan="4"></td>
+                    <td>$0.15</td>
+                </tr>
+               <tr>
+                  <td>Product 2</td>
+                  <td>3</td>
+                  <td>0</td>
+                  <td>$5</td>
+                  <td>$5</td>
+                  <td>$15</td>
+               </tr>
+               <tr>
+                    <td>Product 2 korting</td>
+                    <td colspan="4"></td>
+                    <td>$ -0.15</td>
+                </tr>
+               <tr>
+                  <td colspan="5" class="total">Totaal excl. BTW</td>
+                  <td class="total">$35</td>
+               </tr>
+               <tr>
+                  <td colspan="5" class="total">Totaalbedrag</td>
+                  <td class="total">$35</td>
+               </tr>
+            </tbody>
+         </table>
+         <div class="invoice-footer">Dank u voor uw aankoop bij Online Supermarkt. Wij hopen dat u tevreden bent met uw bestelling.</div>
+      </div>
+   </body>
+</html>

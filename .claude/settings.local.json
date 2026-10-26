@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Skill(update-config)",
+      "Skill(update-config:*)",
+      "Bash(git branch -d feature/*)",
+      "Bash(git branch -D feature/*)",
+      "Bash(git push origin --delete feature/*)"
+    ]
+  }
+}

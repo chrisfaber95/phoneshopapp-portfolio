@@ -1,0 +1,170 @@
+<template>
+	<div class="bon-container">
+		<p class="time" v-if="item.pickupTime">Afhaaltijd: {{item.pickupTime}}</p>
+		<div class="top" v-if="item">
+			<!--<div class="crate"><h3>Bak</h3><input ref="scancart" v-model="item.pickingcrate" /></div>-->
+			<h4>Status:
+				<b v-if="item.status == 'ordered'">Besteld</b>
+				<b v-if="item.status == 'picked'">Verpakt</b>
+				<b v-if="item.status == 'scanned'">Verwerkt bij de kassa</b>
+				<b v-if="item.status == 'payed'">Betaald</b>
+				<b v-if="item.status == 'afgehaald'">Afgehaald</b>
+				<b v-if="item.status == 'rejected'">Geannuleerd</b></h4>			
+			<div class="topbuttons">
+				<b-button v-if="item.status == 'ordered'" v-bind:class="[{'chosenorder': item.picking_user == auth.getUserId()}]"  @click="choosePickingMethod = !choosePickingMethod">
+					<div v-if="item.picking_user != auth.getUserId()">Accepteren</div>
+					<div v-if="item.picking_user == auth.getUserId()">Aanpassen</div>
+				</b-button>
+				<div class="modaloverlay" v-if="choosePickingMethod" @click="choosePickingMethod = !choosePickingMethod"></div>
+				<div class="pickingchooser" v-if="choosePickingMethod">
+					
+					<h2>Kies methode</h2>
+					<div class="methodes">
+						<div class="methode">
+							<div>Winkelmandje</div>
+							<b-button v-if="item.status == 'ordered'" @click="item.pickingcrate = 'Winkelmandje'; item.picking_user = auth.getUserId();choosePickingMethod = false; updateOrderBon();">
+								<img :src=basket />
+							</b-button>
+						</div>
+						<div class="methode">
+							<div>Rolmandje</div>
+							<b-button v-if="item.status == 'ordered'" @click="item.pickingcrate = 'Rolmandje'; item.picking_user = auth.getUserId();choosePickingMethod = false; updateOrderBon();">
+								<img :src=rolmandje />
+							</b-button>
+						</div>
+						<div class="methode">
+							<div>Rolcontainer</div>
+							<b-button v-if="item.status == 'ordered'" @click="item.pickingcrate = 'Rolcontainer'; item.picking_user = auth.getUserId();choosePickingMethod = false; updateOrderBon();">
+								<img :src=rolcontainer />
+							</b-button>
+						</div>
+						<div class="methode">
+							<div>Boodschappenkar</div>
+							<b-button v-if="item.status == 'ordered'" @click="item.pickingcrate = 'Boodschappenkar'; item.picking_user = auth.getUserId();choosePickingMethod = false; updateOrderBon();">
+								<img :src=shoppingcart />
+							</b-button>
+						</div>
+					</div>
+					
+					<h2> Let op! Vergeet niet de gebruikte tassen toe te voegen op de bon</h2>
+					<b-button class="btn" @click="choosePickingMethod = !choosePickingMethod" >Sluiten</b-button>
+				</div>
+				<b-button v-if="item.status == 'ordered' && (item.picking_user == auth.getUserId() || auth.isAdmin())" :disabled="itemAmount.amount == 0" @click="picked()">Verzameld</b-button>
+				<b-button v-if="item.status == 'payed'" @click="orderTaken()">Afgehaald</b-button>
+				<b-button v-if="auth.isAdmin()" @click="editmodal = true">Wijzigen</b-button>
+				<div class="modaloverlay" v-if="editmodal" @click="editmodal = !editmodal"></div>
+				<div class="editmodal" v-if="editmodal" >
+					<div class="topbuttons">
+						<b-button v-if="auth.isAdmin()" @click="reject()">Weigeren</b-button>
+						<b-button class="btn" @click="editmodal = false">Sluiten</b-button>
+					</div>
+					<div class="productlist">
+						<p>Producten:</p>
+						<div class="product" v-for="item in filteredProducts" :key="'return' + item.ean">
+							<div class="title">{{unescape(item.title)}}	</div>		
+							<div class="title ean part" v-if="item.ean != null">EAN: {{item.ean}}</div>
+							<div class="part selectbutton">
+								<b-button class="btn" @click="rescanBarcode = true">Return</b-button>
+							</div>		
+							<div class="modaloverlay" v-if="rescanBarcode" @click="rescanBarcode = !rescanBarcode"></div>
+							<div class="barcodeoverlay" v-if="rescanBarcode">
+								<div class="title">{{unescape(item.title)}}</div>
+								<div class="title ean" v-if="item.ean != null">Ean:<br>{{item.ean}}</div>
+								<div class="title">Aantal: {{item.picked}} x</div>
+								<b-button class="btn" @click="rescanBarcode = false">Sluiten</b-button>
+								<barcode class="barcode" v-bind:value="item.ean" ref="barcode" height= "250" >
+									Show this if the rendering fails.
+								</barcode>
+							</div>
+						</div>
+						<div class="product" v-for="item in filteredDoneProducts" :key="'return' + item.ean">
+							<div class="title">{{unescape(item.title)}}	</div>		
+							<div class="title ean part" v-if="item.ean != null">EAN: {{item.ean}}</div>
+							<div class="part selectbutton">
+								<b-button class="btn" @click="rescanBarcode = true">Return</b-button>
+							</div>		
+							<div class="modaloverlay" v-if="rescanBarcode" @click="rescanBarcode = !rescanBarcode"></div>
+							<div class="barcodeoverlay" v-if="rescanBarcode">
+								<div class="title">{{unescape(item.title)}}</div>
+								<div class="title ean" v-if="item.ean != null">Ean:<br>{{item.ean}}</div>
+								<div class="title">Aantal: {{item.picked}} x</div>
+								<b-button class="btn" @click="rescanBarcode = false">Sluiten</b-button>
+								<barcode class="barcode" v-bind:value="item.ean" ref="barcode" height= "250" >
+									Show this if the rendering fails.
+								</barcode>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="bon">
+			<div class="header">
+				<div class="productamount" @click="moreProductAlert()">
+					<img :src=productin />
+					<h2 v-bind:class="[{'moreproducts': itemAmount.amount > itemAmount.max}]">{{itemAmount.amount}}/{{itemAmount.max}}</h2>
+				</div>
+				<h1>Bestelling: {{item.order_id}}</h1>
+				<div class="picktype">
+					<img v-if="item.pickingcrate == 'Winkelmandje'" :src=basket />
+					<img v-if="item.pickingcrate == 'Rolmandje'" :src=rolmandje />
+					<img v-if="item.pickingcrate == 'Rolcontainer'" :src=rolcontainer />
+					<img v-if="item.pickingcrate == 'Boodschappenkar'" :src=shoppingcart />
+					<img v-if="item.pickingcrate != null || item.pickingcrate != 'null'" src="" />
+					<!--<h2 v-if="item.pickingcrate != null || item.pickingcrate != 'null'">Verzamelmethode: {{item.pickingcrate}}</h2>-->
+				</div>
+			</div>
+			<div class="offline-info" v-if="item.winkelbon">
+				<h3>Winkelbon:</h3>
+				<barcode v-bind:value="item.winkelbon" ref="barcode" :options="{height: 150}">
+					Geen barcode beschikbaar
+				</barcode>
+			</div>
+			<!--<h3>Coop Lubbers</h3>-->
+			<h4>{{item.customerName}}</h4>
+			<p>Klantenkaart: {{item.klantenkaart}}</p>
+			<!--<p>{{formattedDate(item.pickupDate)}} {{item.pickupTime}}</p>-->
+			<p>Koopzegels: n.v.t</p>
+			<h4>Spaarzegels: {{item.spaarzegels == 1 ? "Ja" : "Nee"}}</h4>
+			<div class="bags">
+				<b-button v-if="(item.status == 'ordered')" @click="chooseBags = !chooseBags">
+					<img :src=shoppingbag />
+				</b-button>
+			</div>
+			<div class="modaloverlay" v-if="chooseBags" @click="chooseBags = !chooseBags"></div>
+			<div class="bagchooser" v-if="chooseBags">
+				
+				<h2>Kies draagtas</h2>
+				<div class="extrabags">
+					<div class="bag" v-for="bag in bagtypes" v-bind:key="bag.ean">
+						<ReceiptBags v-bind:ean="bag.ean" :ref="'bag'+bag.ean" />
+						<b-button  @click="addBag(bag.ean)">Toevoegen</b-button>
+					</div>
+				</div>
+				<b-button class="btn" @click="chooseBags = !chooseBags" >Sluiten</b-button>
+			</div>
+			<div v-if="item.cart != null">
+				<div class="product" v-for="products in filteredProducts" v-bind:key="products.ean" 
+				:class="[isNotPicked(products)? 'noItem' : '', isSomePicked(products)? 'someItems' : '', isPicked(products)? 'pickedItems' : '']">
+					<ReceiptItem v-bind:products="products" :ref="item.order_id+'p'+products.product_id"></ReceiptItem>
+					<div class="amount" v-if="products.amount != null">Aantal: {{products.picked}}/{{products.amount}}</div>
+					<div class="amountchanger" v-if="(item.status == 'ordered') && item.picking_user == auth.getUserId()">
+						<button class="removebtn" :class="products.stock <= 0?'errbtn':''" variant="danger" @click="noStock(products)">Geen voorraad</button>
+						<button class="removebtn"  v-if="auth.isAdmin()" :class="products.end_of_life == 1?'errbtn':''"  variant="danger" @click="products.picked = 0; productEOL(products)">End of Life</button>
+						<button class="removebtn" v-if="products.picked >= 1" variant="danger" @click="products.picked -= 1; updateOrder()">Verwijder</button>
+						<button v-if="products.picked != products.amount || products.ean == bagtypes[0].ean || products.ean == bagtypes[1].ean || products.ean == bagtypes[2].ean || products.ean == bagtypes[3].ean" variant="success" @click="multiAlert(products); restocked(products); updateOrder()">Toevoegen</button>
+					</div>	
+				</div>
+				<div class="product" v-for="products in filteredDoneProducts" v-bind:key="'done'+products.ean" 
+				:class="[isNotPicked(products)? 'noItem' : '', isSomePicked(products)? 'someItems' : '', isPicked(products)? 'pickedItems' : '']">
+					<ReceiptItem v-bind:products="products" :ref="item.order_id+'p'+products.product_id"></ReceiptItem>
+					<div class="amount" v-if="products.amount != null">Aantal: {{products.picked}}/{{products.amount}}</div>
+					<div class="amountchanger"  v-if="(item.status == 'ordered') && item.picking_user == auth.getUserId()">
+						<button class="removebtn" v-if="products.picked >= 1" variant="danger" @click="products.picked -= 1; updateOrder()">Verwijder</button>
+						<button v-if="products.picked != products.amount || products.ean == bagtypes[0].ean || products.ean == bagtypes[1].ean || products.ean == bagtypes[2].ean || products.ean == bagtypes[3].ean" variant="success" @click="multiAlert(products); restocked(products); updateOrder()">Toevoegen</button>
+					</div>	
+				</div>
+			</div>
+		</div>
+	</div>
+</template>

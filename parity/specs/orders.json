@@ -1,0 +1,10 @@
+[
+  { "name": "GET order list filtered on status (employee)", "method": "GET", "path": "/api/v1/order?0[]=%7B%22filterType%22%3A%22and%22%2C%22value%22%3A%5B%7B%22status%22%3A%22parity-test%22%7D%5D%7D", "headers": { "authorization": "{{token:employee}}" }, "ignoreKeys": ["password", "accessToken", "resettoken", "updatedAt"] },
+  { "name": "GET order list with an operator filter (employee)", "method": "GET", "path": "/api/v1/order?0[]=%7B%22filterType%22%3A%22and%22%2C%22value%22%3A%5B%7B%22status%22%3A%7B%22filterType%22%3A%22like%22%2C%22value%22%3A%22parity%25%22%7D%7D%5D%7D", "headers": { "authorization": "{{token:employee}}" }, "ignoreKeys": ["password", "accessToken", "resettoken", "updatedAt"] },
+  { "name": "GET order list of the customer", "method": "GET", "path": "/api/v1/order?0[]=%7B%22filterType%22%3A%22and%22%2C%22value%22%3A%5B%7B%22customer_id%22%3A%22bbbbbbbb-0000-4000-8000-000000000001%22%7D%5D%7D", "headers": { "authorization": "{{token:customer}}" }, "ignoreKeys": ["password", "accessToken", "resettoken", "updatedAt"] },
+  { "name": "GET order list of another customer", "method": "GET", "path": "/api/v1/order?0[]=%7B%22filterType%22%3A%22and%22%2C%22value%22%3A%5B%7B%22customer_id%22%3A%22aaaaaaaa-0000-4000-8000-000000000001%22%7D%5D%7D", "headers": { "authorization": "{{token:customer}}" }, "ignoreKeys": ["password", "accessToken", "resettoken", "updatedAt"], "knownDifference": "a customer could list the orders of any customer; now only their own" },
+  { "name": "GET order list without token", "method": "GET", "path": "/api/v1/order", "ignoreKeys": ["error"] },
+  { "name": "GET order single by uuid", "method": "GET", "path": "/api/v1/order/single/ffffffff-0000-4000-8000-000000000001", "ignoreKeys": ["password", "accessToken", "resettoken", "updatedAt"] },
+  { "name": "GET order single unknown uuid", "method": "GET", "path": "/api/v1/order/single/00000000-0000-4000-8000-000000000000" },
+  { "name": "GET order count", "method": "GET", "path": "/api/v1/order/count/2030-01-02" }
+]

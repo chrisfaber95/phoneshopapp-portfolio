@@ -1,0 +1,590 @@
+[
+  {
+    "method": "GET",
+    "path": "/api/v1",
+    "guard": "none",
+    "usedByKlant": false
+  },
+  {
+    "method": "GET",
+    "path": "/api/v1/actie_order",
+    "guard": "none",
+    "usedByKlant": false
+  },
+  {
+    "method": "POST",
+    "path": "/api/v1/actie_order",
+    "guard": "none",
+    "usedByKlant": true
+  },
+  {
+    "method": "GET",
+    "path": "/api/v1/actie_order/:date",
+    "guard": "none",
+    "usedByKlant": false
+  },
+  {
+    "method": "DELETE",
+    "path": "/api/v1/actie_order/:orderId",
+    "guard": "none",
+    "usedByKlant": false
+  },
+  {
+    "method": "PUT",
+    "path": "/api/v1/actie_order/:orderId",
+    "guard": "none",
+    "usedByKlant": false
+  },
+  {
+    "method": "GET",
+    "path": "/api/v1/actie_order/count/:date",
+    "guard": "none",
+    "usedByKlant": false
+  },
+  {
+    "method": "GET",
+    "path": "/api/v1/actie_order/product/:orderId",
+    "guard": "none",
+    "usedByKlant": false
+  },
+  {
+    "method": "GET",
+    "path": "/api/v1/actie_order/single/:orderId",
+    "guard": "none",
+    "usedByKlant": false
+  },
+  {
+    "method": "DELETE",
+    "path": "/api/v1/customer",
+    "guard": "none",
+    "usedByKlant": false
+  },
+  {
+    "method": "GET",
+    "path": "/api/v1/customer",
+    "guard": "none",
+    "usedByKlant": true
+  },
+  {
+    "method": "POST",
+    "path": "/api/v1/customer",
+    "guard": "none",
+    "usedByKlant": true
+  },
+  {
+    "method": "PUT",
+    "path": "/api/v1/customer",
+    "guard": "customer",
+    "usedByKlant": true
+  },
+  {
+    "method": "DELETE",
+    "path": "/api/v1/customer_favorites",
+    "guard": "none",
+    "usedByKlant": true
+  },
+  {
+    "method": "GET",
+    "path": "/api/v1/customer_favorites",
+    "guard": "none",
+    "usedByKlant": true
+  },
+  {
+    "method": "POST",
+    "path": "/api/v1/customer_favorites",
+    "guard": "none",
+    "usedByKlant": true
+  },
+  {
+    "method": "GET",
+    "path": "/api/v1/customer_spaaractie",
+    "guard": "none",
+    "usedByKlant": true
+  },
+  {
+    "method": "POST",
+    "path": "/api/v1/customer_spaaractie",
+    "guard": "none",
+    "usedByKlant": false
+  },
+  {
+    "method": "PUT",
+    "path": "/api/v1/customer_spaaractie",
+    "guard": "none",
+    "usedByKlant": true
+  },
+  {
+    "method": "GET",
+    "path": "/api/v1/customer_spaaractie/:customerId",
+    "guard": "none",
+    "usedByKlant": false
+  },
+  {
+    "method": "PUT",
+    "path": "/api/v1/customer_spaaractie/employeechange",
+    "guard": "user",
+    "usedByKlant": false
+  },
+  {
+    "method": "PUT",
+    "path": "/api/v1/customer_spaaractie/employeeupdate",
+    "guard": "user",
+    "usedByKlant": false
+  },
+  {
+    "method": "PUT",
+    "path": "/api/v1/customer_spaaractie/nostamps",
+    "guard": "user",
+    "usedByKlant": false
+  },
+  {
+    "method": "GET",
+    "path": "/api/v1/customer_spaaractie/reminder",
+    "guard": "none",
+    "usedByKlant": false
+  },
+  {
+    "method": "GET",
+    "path": "/api/v1/customer/employee",
+    "guard": "user",
+    "usedByKlant": false
+  },
+  {
+    "method": "GET",
+    "path": "/api/v1/customer/employee-all",
+    "guard": "user",
+    "usedByKlant": false
+  },
+  {
+    "method": "POST",
+    "path": "/api/v1/customer/login",
+    "guard": "none",
+    "usedByKlant": true
+  },
+  {
+    "method": "POST",
+    "path": "/api/v1/customer/passwordreset",
+    "guard": "none",
+    "usedByKlant": true
+  },
+  {
+    "method": "POST",
+    "path": "/api/v1/customer/register",
+    "guard": "none",
+    "usedByKlant": false
+  },
+  {
+    "method": "GET",
+    "path": "/api/v1/customer/single",
+    "guard": "customer",
+    "usedByKlant": true
+  },
+  {
+    "method": "GET",
+    "path": "/api/v1/daytotals",
+    "guard": "none",
+    "usedByKlant": false
+  },
+  {
+    "method": "POST",
+    "path": "/api/v1/daytotals",
+    "guard": "none",
+    "usedByKlant": false
+  },
+  {
+    "method": "GET",
+    "path": "/api/v1/daytotals/:date",
+    "guard": "none",
+    "usedByKlant": false
+  },
+  {
+    "method": "DELETE",
+    "path": "/api/v1/departments",
+    "guard": "user",
+    "usedByKlant": false
+  },
+  {
+    "method": "GET",
+    "path": "/api/v1/departments",
+    "guard": "none",
+    "usedByKlant": true
+  },
+  {
+    "method": "POST",
+    "path": "/api/v1/departments/post",
+    "guard": "none",
+    "usedByKlant": false
+  },
+  {
+    "method": "GET",
+    "path": "/api/v1/departments/single/:productId",
+    "guard": "none",
+    "usedByKlant": false
+  },
+  {
+    "method": "PUT",
+    "path": "/api/v1/departments/update/:departmentId",
+    "guard": "none",
+    "usedByKlant": false
+  },
+  {
+    "method": "GET",
+    "path": "/api/v1/discounts",
+    "guard": "none",
+    "usedByKlant": true
+  },
+  {
+    "method": "GET",
+    "path": "/api/v1/discounts/get_images",
+    "guard": "none",
+    "usedByKlant": false
+  },
+  {
+    "method": "GET",
+    "path": "/api/v1/discounts/get_images/:imgId",
+    "guard": "none",
+    "usedByKlant": false
+  },
+  {
+    "method": "POST",
+    "path": "/api/v1/discounts/images",
+    "guard": "none",
+    "usedByKlant": false
+  },
+  {
+    "method": "GET",
+    "path": "/api/v1/discounts/types",
+    "guard": "none",
+    "usedByKlant": false
+  },
+  {
+    "method": "POST",
+    "path": "/api/v1/feedback",
+    "guard": "none",
+    "usedByKlant": true
+  },
+  {
+    "method": "GET",
+    "path": "/api/v1/info",
+    "guard": "none",
+    "usedByKlant": false
+  },
+  {
+    "method": "POST",
+    "path": "/api/v1/info/post",
+    "guard": "none",
+    "usedByKlant": false
+  },
+  {
+    "method": "POST",
+    "path": "/api/v1/mollie/webhook",
+    "guard": "none",
+    "usedByKlant": false
+  },
+  {
+    "method": "GET",
+    "path": "/api/v1/order",
+    "guard": "none",
+    "usedByKlant": true
+  },
+  {
+    "method": "POST",
+    "path": "/api/v1/order",
+    "guard": "none",
+    "usedByKlant": true
+  },
+  {
+    "method": "DELETE",
+    "path": "/api/v1/order_information",
+    "guard": "none",
+    "usedByKlant": true
+  },
+  {
+    "method": "GET",
+    "path": "/api/v1/order_information",
+    "guard": "none",
+    "usedByKlant": true
+  },
+  {
+    "method": "GET",
+    "path": "/api/v1/order/:date",
+    "guard": "none",
+    "usedByKlant": false
+  },
+  {
+    "method": "DELETE",
+    "path": "/api/v1/order/:orderId",
+    "guard": "none",
+    "usedByKlant": false
+  },
+  {
+    "method": "PUT",
+    "path": "/api/v1/order/:orderId",
+    "guard": "none",
+    "usedByKlant": true
+  },
+  {
+    "method": "GET",
+    "path": "/api/v1/order/count/:date",
+    "guard": "none",
+    "usedByKlant": true
+  },
+  {
+    "method": "GET",
+    "path": "/api/v1/order/product/:orderId",
+    "guard": "none",
+    "usedByKlant": false
+  },
+  {
+    "method": "GET",
+    "path": "/api/v1/order/receipt/:orderId",
+    "guard": "none",
+    "usedByKlant": false
+  },
+  {
+    "method": "GET",
+    "path": "/api/v1/order/single/:orderId",
+    "guard": "none",
+    "usedByKlant": false
+  },
+  {
+    "method": "GET",
+    "path": "/api/v1/order/test/:orderId",
+    "guard": "none",
+    "usedByKlant": false
+  },
+  {
+    "method": "GET",
+    "path": "/api/v1/product",
+    "guard": "none",
+    "usedByKlant": true
+  },
+  {
+    "method": "PUT",
+    "path": "/api/v1/product",
+    "guard": "none",
+    "usedByKlant": false
+  },
+  {
+    "method": "GET",
+    "path": "/api/v1/product/:productId",
+    "guard": "none",
+    "usedByKlant": true
+  },
+  {
+    "method": "DELETE",
+    "path": "/api/v1/product/delete/:productId",
+    "guard": "none",
+    "usedByKlant": false
+  },
+  {
+    "method": "POST",
+    "path": "/api/v1/product/post",
+    "guard": "none",
+    "usedByKlant": false
+  },
+  {
+    "method": "POST",
+    "path": "/api/v1/product/scanner",
+    "guard": "none",
+    "usedByKlant": false
+  },
+  {
+    "method": "GET",
+    "path": "/api/v1/product/search",
+    "guard": "none",
+    "usedByKlant": true
+  },
+  {
+    "method": "POST",
+    "path": "/api/v1/product/update_images",
+    "guard": "none",
+    "usedByKlant": false
+  },
+  {
+    "method": "GET",
+    "path": "/api/v1/settings/language",
+    "guard": "none",
+    "usedByKlant": false
+  },
+  {
+    "method": "GET",
+    "path": "/api/v1/settings/rights",
+    "guard": "none",
+    "usedByKlant": false
+  },
+  {
+    "method": "GET",
+    "path": "/api/v1/shoppinglist",
+    "guard": "none",
+    "usedByKlant": false
+  },
+  {
+    "method": "POST",
+    "path": "/api/v1/shoppinglist",
+    "guard": "none",
+    "usedByKlant": false
+  },
+  {
+    "method": "PUT",
+    "path": "/api/v1/shoppinglist",
+    "guard": "none",
+    "usedByKlant": false
+  },
+  {
+    "method": "GET",
+    "path": "/api/v1/shoppinglist/:listId",
+    "guard": "none",
+    "usedByKlant": true
+  },
+  {
+    "method": "POST",
+    "path": "/api/v1/site/cookies",
+    "guard": "none",
+    "usedByKlant": true
+  },
+  {
+    "method": "GET",
+    "path": "/api/v1/site/site",
+    "guard": "none",
+    "usedByKlant": false
+  },
+  {
+    "method": "GET",
+    "path": "/api/v1/spaaractie",
+    "guard": "none",
+    "usedByKlant": true
+  },
+  {
+    "method": "POST",
+    "path": "/api/v1/spaaractie",
+    "guard": "none",
+    "usedByKlant": false
+  },
+  {
+    "method": "PUT",
+    "path": "/api/v1/spaaractie",
+    "guard": "none",
+    "usedByKlant": false
+  },
+  {
+    "method": "GET",
+    "path": "/api/v1/spaaractie/:actieId",
+    "guard": "none",
+    "usedByKlant": false
+  },
+  {
+    "method": "GET",
+    "path": "/api/v1/user",
+    "guard": "user",
+    "usedByKlant": false
+  },
+  {
+    "method": "POST",
+    "path": "/api/v1/user",
+    "guard": "user",
+    "usedByKlant": false
+  },
+  {
+    "method": "PUT",
+    "path": "/api/v1/user",
+    "guard": "user",
+    "usedByKlant": false
+  },
+  {
+    "method": "GET",
+    "path": "/api/v1/user/employ/:userId",
+    "guard": "user",
+    "usedByKlant": false
+  },
+  {
+    "method": "POST",
+    "path": "/api/v1/user/login",
+    "guard": "none",
+    "usedByKlant": false
+  },
+  {
+    "method": "POST",
+    "path": "/api/v1/user/register",
+    "guard": "none",
+    "usedByKlant": false
+  },
+  {
+    "method": "GET",
+    "path": "/api/v1/user/single/:userId",
+    "guard": "none",
+    "usedByKlant": false
+  },
+  {
+    "method": "GET",
+    "path": "/api/v1/userroles",
+    "guard": "none",
+    "usedByKlant": false
+  },
+  {
+    "method": "GET",
+    "path": "/api/v2",
+    "guard": "none",
+    "usedByKlant": false
+  },
+  {
+    "method": "DELETE",
+    "path": "/api/v2/business_hours",
+    "guard": "store",
+    "usedByKlant": false
+  },
+  {
+    "method": "GET",
+    "path": "/api/v2/delivery_location",
+    "guard": "none",
+    "usedByKlant": true
+  },
+  {
+    "method": "GET",
+    "path": "/api/v2/job_application",
+    "guard": "none",
+    "usedByKlant": false
+  },
+  {
+    "method": "GET",
+    "path": "/api/v2/job_offer",
+    "guard": "none",
+    "usedByKlant": true
+  },
+  {
+    "method": "GET",
+    "path": "/api/v2/shops",
+    "guard": "none",
+    "usedByKlant": true
+  },
+  {
+    "method": "PUT",
+    "path": "/api/v2/shops",
+    "guard": "none",
+    "usedByKlant": false
+  },
+  {
+    "method": "GET",
+    "path": "/api/v2/terms",
+    "guard": "none",
+    "usedByKlant": true
+  },
+  {
+    "method": "DELETE",
+    "path": "/api/v2/timeslot",
+    "guard": "store",
+    "usedByKlant": false
+  },
+  {
+    "method": "GET",
+    "path": "/api/v2/timeslot",
+    "guard": "none",
+    "usedByKlant": true
+  },
+  {
+    "method": "POST",
+    "path": "/api/v2/timeslot",
+    "guard": "store",
+    "usedByKlant": false
+  }
+]

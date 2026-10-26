@@ -1,0 +1,71 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  server-nest:
+    name: ServerNest (typecheck, lint, test, build)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ServerNest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: ServerNest/package-lock.json
+      - run: npm ci
+      # Parity tests (models, mail) load the old Server code and need its dependencies.
+      - run: npm ci
+        working-directory: Server
+      - run: npm run typecheck
+      - run: npm run lint
+      - run: npm test
+      - run: npm run build
+
+  klant:
+    name: Klant (lint, build)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: Klant
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: Klant/package-lock.json
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run build
+
+  employees:
+    name: Employees (lint, build)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: Employees
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: Employees/package-lock.json
+      # vue-d3-charts peers on Vue 2; the conflict predates CI.
+      - run: npm ci --legacy-peer-deps
+      - run: npm run lint
+      - run: npm run build

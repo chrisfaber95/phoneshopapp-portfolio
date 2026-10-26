@@ -1,0 +1,7 @@
+[
+  { "name": "GET actie orders filtered on status (employee)", "method": "GET", "path": "/api/v1/actie_order?0[]=%7B%22filterType%22%3A%22and%22%2C%22value%22%3A%5B%7B%22status%22%3A%22parity-test%22%7D%5D%7D", "headers": { "authorization": "{{token:employee}}" }, "ignoreKeys": ["password", "accessToken", "resettoken", "updatedAt"] },
+  { "name": "GET actie orders without token", "method": "GET", "path": "/api/v1/actie_order", "ignoreKeys": ["error"] },
+  { "name": "GET actie order single", "method": "GET", "path": "/api/v1/actie_order/single/ffffffff-0000-4000-8000-0000000000a1", "ignoreKeys": ["password", "accessToken", "resettoken", "updatedAt"] },
+  { "name": "GET actie order single unknown", "method": "GET", "path": "/api/v1/actie_order/single/00000000-0000-4000-8000-000000000000" },
+  { "name": "GET actie order count", "method": "GET", "path": "/api/v1/actie_order/count/2030-01-02", "knownDifference": "the old Server counted the rows of the Order table here; actie orders are counted now" }
+]

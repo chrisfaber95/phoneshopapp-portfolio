@@ -1,0 +1,7 @@
+[
+  { "name": "GET users filtered by e-mail (employee)", "method": "GET", "path": "/api/v1/user?email=parity-employee@example.invalid", "headers": { "authorization": "{{token:employee}}" }, "ignoreKeys": ["password", "accessToken", "updatedAt", "createdAt"] },
+  { "name": "GET users without token", "method": "GET", "path": "/api/v1/user", "ignoreKeys": ["error"] },
+  { "name": "GET users as customer", "method": "GET", "path": "/api/v1/user", "headers": { "authorization": "{{token:customer}}" }, "ignoreKeys": ["error"] },
+  { "name": "GET user single", "method": "GET", "path": "/api/v1/user/single/aaaaaaaa-0000-4000-8000-000000000001", "headers": { "authorization": "{{token:employee}}" }, "ignoreKeys": ["password", "accessToken", "updatedAt", "createdAt"] },
+  { "name": "GET user single unknown", "method": "GET", "path": "/api/v1/user/single/00000000-0000-4000-8000-000000000000", "headers": { "authorization": "{{token:employee}}" } }
+]

@@ -1,0 +1,11 @@
+USE shops;
+DELETE FROM Job_Application WHERE job_application_id = 'bbbbbbbb-0000-4000-8000-0000000000b2';
+DELETE FROM Job_Offer WHERE job_offer_id = 'bbbbbbbb-0000-4000-8000-0000000000b1';
+DELETE FROM Timeslots WHERE shop_id = 'cccccccc-0000-4000-8000-000000000001';
+DELETE FROM Delivery_Location WHERE shop_id = 'cccccccc-0000-4000-8000-000000000001';
+DELETE FROM Socials WHERE shop_id = 'cccccccc-0000-4000-8000-000000000001';
+DELETE FROM Business_Hours WHERE shop_id = 'cccccccc-0000-4000-8000-000000000001';
+DELETE FROM Shops WHERE shop_id = 'cccccccc-0000-4000-8000-000000000001';
+DELETE FROM Information WHERE information_id = 'dddddddd-0000-4000-8000-0000000000c1';
+DELETE FROM Address WHERE street = 'Parityweg';
+DELETE FROM Terms_And_Conditions WHERE content = 'parity terms';

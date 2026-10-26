@@ -1,0 +1,20 @@
+[
+  { "name": "GET api root v1", "method": "GET", "path": "/api/v1" },
+  { "name": "GET api root v2", "method": "GET", "path": "/api/v2" },
+  { "name": "GET departments", "method": "GET", "path": "/api/v1/departments" },
+  { "name": "GET departments filtered by visible", "method": "GET", "path": "/api/v1/departments?visible=1" },
+  { "name": "GET departments filtered by id", "method": "GET", "path": "/api/v1/departments?department_id=1" },
+  { "name": "GET departments filtered by an id list", "method": "GET", "path": "/api/v1/departments?department_id[]=1&department_id[]=2&department_id[]=3" },
+  { "name": "GET departments filtered by slug (no match)", "method": "GET", "path": "/api/v1/departments?slug=does-not-exist" },
+  { "name": "GET departments single (stub)", "method": "GET", "path": "/api/v1/departments/single/1" },
+  { "name": "POST departments post (stub) employee", "method": "POST", "path": "/api/v1/departments/post", "headers": { "authorization": "{{token:employee}}" }, "body": {} },
+  { "name": "PUT departments update (stub) employee", "method": "PUT", "path": "/api/v1/departments/update/1", "headers": { "authorization": "{{token:employee}}" }, "body": {} },
+  { "name": "POST departments post without token", "method": "POST", "path": "/api/v1/departments/post", "body": {} },
+  { "name": "DELETE departments unknown id (0 rows)", "method": "DELETE", "path": "/api/v1/departments?department_id=999999999", "headers": { "authorization": "{{token:employee}}" } },
+  { "name": "DELETE departments without token", "method": "DELETE", "path": "/api/v1/departments?department_id=999999999" },
+  { "name": "DELETE departments with a customer token", "method": "DELETE", "path": "/api/v1/departments?department_id=999999999", "headers": { "authorization": "{{token:customer}}" } },
+  { "name": "GET userroles employee", "method": "GET", "path": "/api/v1/userroles", "headers": { "authorization": "{{token:employee}}" } },
+  { "name": "GET userroles filtered by name employee", "method": "GET", "path": "/api/v1/userroles?roleName=Admin", "headers": { "authorization": "{{token:employee}}" } },
+  { "name": "GET userroles without token", "method": "GET", "path": "/api/v1/userroles" },
+  { "name": "GET userroles with a customer token", "method": "GET", "path": "/api/v1/userroles", "headers": { "authorization": "{{token:customer}}" } }
+]
